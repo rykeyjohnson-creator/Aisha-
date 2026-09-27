@@ -86,4 +86,34 @@ class ExampleRobolectricTest {
         assertTrue(contextPrompt.contains("Rahul"))
         assertTrue(contextPrompt.contains("space"))
     }
+
+    @Test
+    fun `verify MemoryManager preferences and recent dialogue persistence`() = runBlocking {
+        val context = ApplicationProvider.getApplicationContext<Context>()
+        val memoryManager = MemoryManager(context)
+
+        // Test preferences save and retrieve
+        memoryManager.savePreference("favorite_language", "Kotlin")
+        memoryManager.savePreference("music_genre", "Synthwave")
+
+        assertEquals("Kotlin", memoryManager.getPreference("favorite_language"))
+        assertEquals("Synthwave", memoryManager.getPreference("music_genre"))
+        assertEquals(2, memoryManager.getAllPreferences().size)
+
+        // Test dialogue pair saving and retrieving
+        memoryManager.saveDialoguePair("Explain quantum computing", "Quantum computing uses qubits...")
+        memoryManager.saveDialoguePair("Is it faster?", "For specific algorithms, yes.")
+
+        val pairs = memoryManager.getRecentDialoguePairs()
+        assertEquals(2, pairs.size)
+        assertEquals("Explain quantum computing", pairs[0].first)
+        assertEquals("Quantum computing uses qubits...", pairs[0].second)
+
+        // Test context prompt inclusion
+        val prompt = memoryManager.buildContextPrompt()
+        assertTrue(prompt.contains("favorite_language: Kotlin"))
+        assertTrue(prompt.contains("music_genre: Synthwave"))
+        assertTrue(prompt.contains("Explain quantum computing"))
+        assertTrue(prompt.contains("Quantum computing uses qubits..."))
+    }
 }

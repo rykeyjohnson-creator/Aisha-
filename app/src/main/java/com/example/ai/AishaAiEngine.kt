@@ -177,8 +177,7 @@ class AishaAiEngine(private val context: Context) {
             2. Do NOT use markdown symbols, asterisks, bullet points, numbering, or headers. Use plain natural conversational sentences only.
             3. You understand English, Hindi, and Hinglish. If spoken to in Hindi or Hinglish, reply naturally in Hindi or Hinglish. If addressed in English, reply in English.
             4. Identify yourself as Aisha when asked.
-            5. Do NOT claim you can control device hardware (like toggling torch or opening apps) as that feature is upcoming in Level 3.
-            ${if (contextPrompt.isNotBlank()) "User context and memory: $contextPrompt" else ""}
+            ${if (contextPrompt.isNotBlank()) "\n[MEMORY & CONTEXT]\n$contextPrompt\nAlways use this stored memory and recent dialogue context to tailor your response to the user." else ""}
         """.trimIndent()
 
         val sysContent = JSONObject()
