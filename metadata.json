@@ -1,0 +1,6 @@
+{
+  "name": "Aisha",
+  "description": "Futuristic AI Voice Assistant with speech recognition, text-to-speech, dynamic clock, and responsive cosmic UI.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

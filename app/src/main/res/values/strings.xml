@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Aisha</string>
+    <string name="mic_button_desc">Start voice input</string>
+    <string name="send_button_desc">Send message</string>
+    <string name="quick_hi_desc">Send Hi greeting</string>
+    <string name="quick_time_desc">Ask for current time</string>
+    <string name="quick_date_desc">Ask for current date</string>
+    <string name="mic_permission_required">Microphone permission is required for voice commands.</string>
+</resources>
